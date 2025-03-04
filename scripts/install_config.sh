@@ -52,6 +52,12 @@ SF_THRESH=0.03
 
 BIRDWEATHER_ID=
 
+#---------------------  Luistervink Station Information -----------------------#
+#_____________Setting the below variables will enable reporting to_____________#
+#__________________________________Luistervink_________________________________#
+LUISTERVINK_SERVER_ADDRESS=https://data.folkertdeboerecology.nl
+LUISTERVINK_DEVICE_TOKEN=
+
 #-----------------------  Web Interface User Password  ------------------------#
 #____________________The variable below sets the 'birdnet'_____________________#
 #___________________user password for the Live Audio Stream,___________________#

@@ -148,6 +148,20 @@ run_analysis() {
       BIRDWEATHER_ID_PARAM=""
       BIRDWEATHER_ID_LOG=""
     fi
+    if [ ! -z $LUISTERVINK_DEVICE_TOKEN ]; then
+      LUISTERVINK_DEVICE_TOKEN_PARAM="--luistervink_device_token ${LUISTERVINK_DEVICE_TOKEN}"
+      LUISTERVINK_DEVICE_TOKEN_LOG="--luistervink_device_token \"IN_USE\""
+    else
+      LUISTERVINK_DEVICE_TOKEN_PARAM=""
+      LUISTERVINK_DEVICE_TOKEN_LOG=""
+    fi
+    if [ ! -z $LUISTERVINK_SERVER_ADDRESS ]; then
+      LUISTERVINK_SERVER_ADDRESS_PARAM="--luistervink_server_address ${LUISTERVINK_SERVER_ADDRESS}"
+      LUISTERVINK_SERVER_ADDRESS_LOG="--luistervink_server_address \"IN_USE\""
+    else
+      LUISTERVINK_SERVER_ADDRESS_PARAM=""
+      LUISTERVINK_SERVER_ADDRESS_LOG=""
+    fi
     echo $PYTHON_VIRTUAL_ENV "$DIR/analyze.py" \
 --i "${1}/${i}" \
 --o "${1}/${i}.csv" \
@@ -159,8 +173,9 @@ run_analysis() {
 --min_conf "${CONFIDENCE}" \
 ${INCLUDEPARAM} \
 ${EXCLUDEPARAM} \
-${BIRDWEATHER_ID_LOG}
-
+${BIRDWEATHER_DEVICE_LOG}\
+${LUISTERVINK_DEVICE_TOKEN_LOG}\
+${LUISTERVINK_SERVER_ADDRESS_LOG}
     #echo "${1}/${i}" > $HOME/BirdNET-Pi/analyzing_now.txt
     spectrogram_png=${EXTRACTED}/spectrogram.png
     analyzing_now="${1}/${i}"
@@ -181,7 +196,9 @@ ${BIRDWEATHER_ID_LOG}
       --min_conf "${CONFIDENCE}" \
       ${INCLUDEPARAM} \
       ${EXCLUDEPARAM} \
-      ${BIRDWEATHER_ID_PARAM}
+      ${BIRDWEATHER_ID_PARAM}\
+      ${LUISTERVINK_DEVICE_TOKEN_PARAM}\
+      ${LUISTERVINK_SERVER_ADDRESS_PARAM}
     if [ ! -z $HEARTBEAT_URL ]; then
       echo "Performing Heartbeat"
       IP=`curl -s ${HEARTBEAT_URL}`

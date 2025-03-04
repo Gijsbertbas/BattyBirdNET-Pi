@@ -8,6 +8,8 @@ sed -i s/'^CADDY_PWD=$'/"CADDY_PWD=${caddy_pwd}"/g ${birders_conf}
 sed -i s/'^ICE_PWD=$'/"ICE_PWD=${ice_pwd}"/g ${birders_conf}
 sed -i s/'^DB_PWD=$'/"DB_PWD=${db_pwd}"/g ${birders_conf}
 sed -i s/'^BIRDWEATHER_ID=$'/"BIRDWEATHER_ID=${birdweather_id}"/g ${birders_conf}
+sed -i s/'^LUISTERVINK_DEVICE_TOKEN=$'/"LUISTERVINK_DEVICE_TOKEN=${luistervink_device_token}"/g ${birders_conf}
+sed -i s/'^LUISTERVINK_SERVER_ADDRESS=$'/"LUISTERVINK_SERVER_ADDRESS=${luistervink_server_address}"/g ${birders_conf}
 sed -i s/'^BIRDNETPI_URL=$'/"BIRDNETPI_URL=${birdnetpi_url/\/\//\\\/\\\/}"/g ${birders_conf}
 sed -i s/'^WEBTERMINAL_URL=$'/"WEBTERMINAL_URL=${extractionlog_url/\/\//\\\/\\\/}"/g ${birders_conf}
 sed -i s/'^BIRDNETLOG_URL=$'/"BIRDNETLOG_URL=${birdnetlog_url/\/\//\\\/\\\/}"/g ${birders_conf}
