@@ -82,7 +82,7 @@ def main():
         help='Private Station ID for Luistervink.')
     parser.add_argument(
         '--luistervink_server_address',
-        default='https://data.folkertdeboerecology.nl',
+        default='https://api.luistervink.nl',
         help='Server address for Luistervink.')
 
     args = parser.parse_args()

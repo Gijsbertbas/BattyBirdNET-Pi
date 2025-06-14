@@ -7,7 +7,7 @@ def test():
 LONGITUDE=-73.0
 BIRDWEATHER_ID=
 LUISTERVINK_DEVICE_TOKEN=
-LUISTERVINK_SERVER_ADDRESS=https://data.folkertdeboerecology.nl
+LUISTERVINK_SERVER_ADDRESS=https://api.luistervink.nl
 CADDY_PWD="nonsuchpass"
 ICE_PWD=birdnetpi
 BIRDNETPI_URL=

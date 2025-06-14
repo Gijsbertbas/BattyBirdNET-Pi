@@ -320,7 +320,7 @@ you can follow the instructions for installing BirdNET-Pi to the point of flashi
 * After that you will log in to the RasPi with your username and password via ssh (it should be in your wireless LAN after booting)
 * You call the install script from this repository (i.e.. this is where you deviate from the instructions found for BirdNET-Pi)
 ```sh
-curl -s https://raw.githubusercontent.com/rdz-oss/BattyBirdNET-Pi/main/newinstaller.sh | bash
+curl -s https://raw.githubusercontent.com/gijsbertbas/BattyBirdNET-Pi/main/newinstaller.sh | bash
 ```
 The operating system is now updated, two repositories are pulled from github, files are copied for the automation of services, the webserver setup etc.
 Might take a few minutes. When done, it will reboot. **If you see a bat flying in the middle of the WbUI - you have installed BattyBirdNET-Pi**.

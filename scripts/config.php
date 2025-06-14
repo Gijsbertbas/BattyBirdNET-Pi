@@ -73,7 +73,7 @@ if(isset($_GET["latitude"])){
   $site_name = str_replace('"', "", $site_name);
   $site_name = str_replace('\'', "", $site_name);
   $birdweather_id = $_GET["birdweather_id"];
-   $luistervink_device_token = $_GET["luistervink_device_token"]; // New Luistervink ID
+  $luistervink_device_token = $_GET["luistervink_device_token"]; // New Luistervink ID
   $luistervink_server_address = $_GET["luistervink_server_address"]; // New LUISTERVINK_SERVER_ADDRESS
   $apprise_input = $_GET['apprise_input'];
   $apprise_notification_title = $_GET['apprise_notification_title'];
@@ -510,19 +510,21 @@ function runProcess() {
       <p>Set your Latitude and Longitude to 4 decimal places. Get your coordinates <a href="https://latlong.net" target="_blank">here</a>.</p>
       </td></tr></table><br>
       <table class="settingstable"><tr><td>
-      <h2>BirdWeather</h2>
-      <label for="birdweather_id">BirdWeather ID: </label>
-      <input name="birdweather_id" type="text" value="<?php print($config['BIRDWEATHER_ID']);?>" /><br>
-      <p><a href="https://app.birdweather.com" target="_blank">BirdWeather.com</a> is a weather map for bird sounds. Stations around the world supply audio and video streams to BirdWeather where they are then analyzed by BirdNET and compared to eBird Grid data. BirdWeather catalogues the bird audio and spectrogram visualizations so that you can listen to, view, and read about birds throughout the world. <a href="mailto:tim@birdweather.com?subject=Request%20BirdWeather%20ID&body=<?php include($home.'/BirdNET-Pi/scripts/birdweather_request.php'); ?>" target="_blank">Email Tim</a> to request a BirdWeather ID</p>
-      </td></tr></table><br>
+        <h2>BirdWeather</h2>
+        <label for="birdweather_id">BirdWeather ID: </label>
+        <input name="birdweather_id" type="text" value="<?php print($config['BIRDWEATHER_ID']);?>" /><br>
+        <p><a href="https://app.birdweather.com" target="_blank">BirdWeather.com</a> is a weather map for bird sounds. Stations around the world supply audio and video streams to BirdWeather where they are then analyzed by BirdNET and compared to eBird Grid data. BirdWeather catalogues the bird audio and spectrogram visualizations so that you can listen to, view, and read about birds throughout the world. <a href="mailto:tim@birdweather.com?subject=Request%20BirdWeather%20ID&body=<?php include($home.'/BirdNET-Pi/scripts/birdweather_request.php'); ?>" target="_blank">Email Tim</a> to request a BirdWeather ID</p>
+        </td></tr>
+      </table><br>
         <table class="settingstable"><tr><td>
-	  <h2>Luistervink</h2>
-      <label for="luistervink_server_address">Luistervink Address: </label>
-      <input name="luistervink_server_address" type="text" value="<?php echo htmlspecialchars($config['LUISTERVINK_SERVER_ADDRESS'] ?? ''); ?>" /><br>
-      <label for="luistervink_device_token">Device Token: </label>
-      <input name="luistervink_device_token" type="text" value="<?php print($config['LUISTERVINK_DEVICE_TOKEN']);?>" /><br>
-         <p>Enter the Luistervink address and device token for integration with the system.</p>
-      </td></tr></table><br>
+	       <h2>Luistervink</h2>
+        <label for="luistervink_server_address">Luistervink Address: </label>
+        <input name="luistervink_server_address" type="text" value="<?php echo htmlspecialchars($config['LUISTERVINK_SERVER_ADDRESS'] ?? ''); ?>" /><br>
+        <label for="luistervink_device_token">Device Token: </label>
+        <input name="luistervink_device_token" type="text" value="<?php print($config['LUISTERVINK_DEVICE_TOKEN']);?>" /><br>
+          <p>Enter the Luistervink address and device token for integration with the system.</p>
+        </td></tr>
+      </table><br>
       <table class="settingstable" style="width:100%"><tr><td>
       <h2>Notifications</h2>
       <p><a target="_blank" href="https://github.com/caronc/apprise/wiki">Apprise Notifications</a> can be setup and enabled for 70+ notification services. Each service should be on its own line.</p>

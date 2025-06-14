@@ -55,7 +55,7 @@ BIRDWEATHER_ID=
 #---------------------  Luistervink Station Information -----------------------#
 #_____________Setting the below variables will enable reporting to_____________#
 #__________________________________Luistervink_________________________________#
-LUISTERVINK_SERVER_ADDRESS=https://data.folkertdeboerecology.nl
+LUISTERVINK_SERVER_ADDRESS=https://api.luistervink.nl
 LUISTERVINK_DEVICE_TOKEN=
 
 #-----------------------  Web Interface User Password  ------------------------#

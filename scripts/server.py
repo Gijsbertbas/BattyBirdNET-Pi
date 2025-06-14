@@ -139,7 +139,7 @@ def handle_client(conn, addr):
                 args.o = ''
                 args.birdweather_id = '99999'
                 args.luistervink_device_token = '99999'
-                args.luistervink_server_address = "https://data.folkertdeboerecology.nl"
+                args.luistervink_server_address = "https://api.luistervink.nl"
                 args.include_list = 'null'
                 args.exclude_list = 'null'
                 args.overlap = 0.0
@@ -355,12 +355,12 @@ def handle_client(conn, addr):
                                         # Uploading soundscape files is not supported yet
                                         soundscape_id = 0
 
-                                        detection_url = f"{conf['LUISTERVINK_SERVER_ADDRESS']}/api/detections/"
-                                        params = {"token": conf["LUISTERVINK_DEVICE_TOKEN"]}
+                                        detection_url = f"{luistervink_server_address}/api/detections/"
+                                        params = {"token": luistervink_device_token}
 
 
                                         data = {
-                                                "timestamp": now.strftime(format="%Y-%m-%d %H:%M:%S"),
+                                                "timestamp": now.isoformat(),
                                                 "commonName":  Com_Name,
                                                 "scientificName":  Sci_Name,
                                                 "lat": str(args.lat),
@@ -374,7 +374,7 @@ def handle_client(conn, addr):
                                             response = requests.post(
                                                     detection_url, json=data, params=params, timeout=20
                                                 )
-                                            print("Detection POST Response Status - %d", response.status_code)
+                                            print("Luistervink detection POST Response Status - %d", response.status_code)
                                         except BaseException as e:
                                             print("Cannot POST detection: %s", e)
                                     except BaseException:
