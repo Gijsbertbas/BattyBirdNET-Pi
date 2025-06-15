@@ -55,6 +55,7 @@ BIRDWEATHER_ID=
 #---------------------  Luistervink Station Information -----------------------#
 #_____________Setting the below variables will enable reporting to_____________#
 #__________________________________Luistervink_________________________________#
+
 LUISTERVINK_SERVER_ADDRESS=https://api.luistervink.nl
 LUISTERVINK_DEVICE_TOKEN=
 
@@ -66,7 +67,7 @@ LUISTERVINK_DEVICE_TOKEN=
 ## CADDY_PWD is the plaintext password (that will be hashed) and used to access
 ## certain parts of the web interface
 
-CADDY_PWD=
+CADDY_PWD=birdnet
 
 #-------------------------  Live Audio Stream  --------------------------------#
 #_____________The variable below configures/enables the live___________________#
