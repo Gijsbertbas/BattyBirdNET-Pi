@@ -79,7 +79,7 @@ def main():
     parser.add_argument(
         '--luistervink_device_token',
         default='99999',
-        help='Private Station ID for Luistervink.')
+        help='Private access token for Luistervink.')
     parser.add_argument(
         '--luistervink_server_address',
         default='https://api.luistervink.nl',

@@ -351,34 +351,39 @@ def handle_client(conn, addr):
                                       '\n')
 
                                 if luistervink_device_token !=  "99999":
-                                    try:
-                                        # Uploading soundscape files is not supported yet
-                                        soundscape_id = 0
-
-                                        detection_url = f"{luistervink_server_address}/api/detections/"
-                                        params = {"token": luistervink_device_token}
-
-
-                                        data = {
-                                                "timestamp": now.isoformat(),
-                                                "commonName":  Com_Name,
-                                                "scientificName":  Sci_Name,
-                                                "lat": str(args.lat),
-                                                "lon": str(args.long),
-                                                "confidence": Confidence,
-                                                "soundscapeId": soundscape_id,
-                                                "soundscapeStartTime": d.split('-')[0],
-                                                "soundscapeEndTime": d.split('-')[1],
-                                            }
+                                    with open(userDir + '/BirdNET-Pi/luistervink.log', 'a') as lvlog:
                                         try:
-                                            response = requests.post(
-                                                    detection_url, json=data, params=params, timeout=20
-                                                )
-                                            print("Luistervink detection POST Response Status - %d", response.status_code)
+                                            # Uploading soundscape files is not supported yet
+                                            soundscape_id = 0
+
+                                            detection_url = f"{luistervink_server_address}/api/detections/"
+                                            params = {"token": luistervink_device_token}
+
+
+                                            data = {
+                                                    "timestamp": now.isoformat(),
+                                                    "commonName":  Com_Name,
+                                                    "scientificName":  Sci_Name,
+                                                    "lat": str(args.lat),
+                                                    "lon": str(args.long),
+                                                    "confidence": Confidence,
+                                                    "soundscapeId": soundscape_id,
+                                                    "soundscapeStartTime": d.split('-')[0],
+                                                    "soundscapeEndTime": d.split('-')[1],
+                                                }
+                                            lvlog.write(str(data) + '\n')
+                                            try:
+                                                response = requests.post(
+                                                        detection_url, json=data, params=params, timeout=20
+                                                    )
+                                                print("Luistervink detection POST Response Status - %d", response.status_code)
+                                                lvlog.write("Luistervink detection POST Response Status - %d \n", response.status_code)
+                                            except BaseException as e:
+                                                print("Cannot POST detection: %s", e)
+                                                lvlog.write("Cannot POST detection: %s \n", e)
                                         except BaseException as e:
-                                            print("Cannot POST detection: %s", e)
-                                    except BaseException:
-                                        print("Cannot POST to Luistervink Server right now")
+                                            print("Cannot POST to Luistervink Server right now")
+                                            lvlog.write(f"Cannot POST to Luistervink Server right now {e} \n")
                                 if birdweather_id != "99999":
                                     try:
 

@@ -157,7 +157,7 @@ run_analysis() {
     fi
     if [ ! -z $LUISTERVINK_SERVER_ADDRESS ]; then
       LUISTERVINK_SERVER_ADDRESS_PARAM="--luistervink_server_address ${LUISTERVINK_SERVER_ADDRESS}"
-      LUISTERVINK_SERVER_ADDRESS_LOG="--luistervink_server_address \"IN_USE\""
+      LUISTERVINK_SERVER_ADDRESS_LOG="--luistervink_server_address ${LUISTERVINK_SERVER_ADDRESS}"
     else
       LUISTERVINK_SERVER_ADDRESS_PARAM=""
       LUISTERVINK_SERVER_ADDRESS_LOG=""
@@ -173,8 +173,8 @@ run_analysis() {
 --min_conf "${CONFIDENCE}" \
 ${INCLUDEPARAM} \
 ${EXCLUDEPARAM} \
-${BIRDWEATHER_DEVICE_LOG}\
-${LUISTERVINK_DEVICE_TOKEN_LOG}\
+${BIRDWEATHER_DEVICE_LOG} \
+${LUISTERVINK_DEVICE_TOKEN_LOG} \
 ${LUISTERVINK_SERVER_ADDRESS_LOG}
     #echo "${1}/${i}" > $HOME/BirdNET-Pi/analyzing_now.txt
     spectrogram_png=${EXTRACTED}/spectrogram.png
