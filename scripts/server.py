@@ -47,12 +47,12 @@ DB_PATH = userDir + '/BirdNET-Pi/scripts/birds.db'
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-
 try:
     server.bind(ADDR)
 except BaseException:
     print("Waiting on socket")
     time.sleep(5)
+
 
 # Open most recent Configuration and grab DB_PWD as a python variable
 with open(userDir + '/BirdNET-Pi/scripts/thisrun.txt', 'r') as f:
@@ -138,6 +138,8 @@ def handle_client(conn, addr):
                 args.i = ''
                 args.o = ''
                 args.birdweather_id = '99999'
+                args.luistervink_device_token = '99999'
+                args.luistervink_server_address = "https://api.luistervink.nl"
                 args.include_list = 'null'
                 args.exclude_list = 'null'
                 args.overlap = 0.0
@@ -155,6 +157,10 @@ def handle_client(conn, addr):
                         args.o = inputvars[1]
                     elif inputvars[0] == 'birdweather_id':
                         args.birdweather_id = inputvars[1]
+                    elif inputvars[0] == 'luistervink_device_token':
+                        args.luistervink_device_token = inputvars[1]
+                    elif inputvars[0] == 'luistervink_server_address':
+                        args.luistervink_server_address = inputvars[1]
                     elif inputvars[0] == 'include_list':
                         args.include_list = inputvars[1]
                     elif inputvars[0] == 'exclude_list':
@@ -184,7 +190,8 @@ def handle_client(conn, addr):
                     EXCLUDE_LIST = []
 
                 birdweather_id = args.birdweather_id
-
+                luistervink_device_token = args.luistervink_device_token
+                luistervink_server_address = args.luistervink_server_address
                 # Get Date/Time from filename in case Pi gets behind
                 # now = datetime.now()
                 full_file_name = args.i
@@ -343,6 +350,35 @@ def handle_client(conn, addr):
                                       File_Name +
                                       '\n')
 
+                                if luistervink_device_token !=  "99999":
+                                    try:
+                                        # Uploading soundscape files is not supported yet
+                                        soundscape_id = 0
+
+                                        detection_url = f"{luistervink_server_address}/api/detections/"
+                                        params = {"token": luistervink_device_token}
+
+
+                                        data = {
+                                                "timestamp": now.isoformat(),
+                                                "commonName":  Com_Name,
+                                                "scientificName":  Sci_Name,
+                                                "lat": str(args.lat),
+                                                "lon": str(args.lon),
+                                                "confidence": score,
+                                                "soundscapeId": soundscape_id,
+                                                "soundscapeStartTime": d.split('-')[0],
+                                                "soundscapeEndTime": d.split('-')[1],
+                                            }
+                                        try:
+                                            response = requests.post(
+                                                    detection_url, json=data, params=params, timeout=20
+                                                )
+                                            print("Luistervink detection POST Response Status - %d", response.status_code)
+                                        except BaseException as e:
+                                            print("Cannot POST detection: %s", e)
+                                    except BaseException as e:
+                                        print("Cannot POST to Luistervink Server right now")
                                 if birdweather_id != "99999":
                                     try:
 

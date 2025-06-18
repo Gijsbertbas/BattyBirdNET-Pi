@@ -52,6 +52,13 @@ SF_THRESH=0.03
 
 BIRDWEATHER_ID=
 
+#---------------------  Luistervink Station Information -----------------------#
+#_____________Setting the below variables will enable reporting to_____________#
+#__________________________________Luistervink_________________________________#
+
+LUISTERVINK_SERVER_ADDRESS=https://api.luistervink.nl
+LUISTERVINK_DEVICE_TOKEN=
+
 #-----------------------  Web Interface User Password  ------------------------#
 #____________________The variable below sets the 'birdnet'_____________________#
 #___________________user password for the Live Audio Stream,___________________#
@@ -60,7 +67,11 @@ BIRDWEATHER_ID=
 ## CADDY_PWD is the plaintext password (that will be hashed) and used to access
 ## certain parts of the web interface
 
+<<<<<<< connect_to_Luistervink
+CADDY_PWD=birdnet
+=======
 CADDY_PWD="birdnet"
+>>>>>>> main
 
 #-------------------------  Live Audio Stream  --------------------------------#
 #_____________The variable below configures/enables the live___________________#

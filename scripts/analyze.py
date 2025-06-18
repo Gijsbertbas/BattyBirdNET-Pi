@@ -76,6 +76,14 @@ def main():
         '--birdweather_id',
         default='99999',
         help='Private Station ID for BirdWeather.')
+    parser.add_argument(
+        '--luistervink_device_token',
+        default='99999',
+        help='Private access token for Luistervink.')
+    parser.add_argument(
+        '--luistervink_server_address',
+        default='https://api.luistervink.nl',
+        help='Server address for Luistervink.')
 
     args = parser.parse_args()
 
@@ -86,6 +94,10 @@ def main():
         sockParams += 'o=' + args.o + '||'
     if args.birdweather_id:
         sockParams += 'birdweather_id=' + args.birdweather_id + '||'
+    if args.luistervink_device_token:
+        sockParams += 'luistervink_device_token=' + args.luistervink_device_token + '||'
+    if args.luistervink_server_address:
+        sockParams += 'luistervink_server_address=' + args.luistervink_server_address + '||'
     if args.include_list:
         sockParams += 'include_list=' + args.include_list + '||'
     if args.exclude_list:

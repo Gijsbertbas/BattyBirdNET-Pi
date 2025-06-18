@@ -40,7 +40,7 @@ fi
 branch=main
 branch_classifier=main
 
-git clone -b $branch --depth=1 https://github.com/rdz-oss/BattyBirdNET-Pi.git ${HOME}/BirdNET-Pi &&
+git clone -b $branch --depth=1 https://github.com/gijsbertbas/BattyBirdNET-Pi.git ${HOME}/BirdNET-Pi &&
 git clone -b $branch_classifier --depth=1 https://github.com/rdz-oss/BattyBirdNET-Analyzer.git ${HOME}/BattyBirdNET-Analyzer &&
 
 sudo find ${HOME}/BirdNET-Pi -type f -name "*.sh" -exec chmod +x {} \;
