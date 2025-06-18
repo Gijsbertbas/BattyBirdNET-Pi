@@ -67,7 +67,11 @@ LUISTERVINK_DEVICE_TOKEN=
 ## CADDY_PWD is the plaintext password (that will be hashed) and used to access
 ## certain parts of the web interface
 
+<<<<<<< connect_to_Luistervink
 CADDY_PWD=birdnet
+=======
+CADDY_PWD="birdnet"
+>>>>>>> main
 
 #-------------------------  Live Audio Stream  --------------------------------#
 #_____________The variable below configures/enables the live___________________#
