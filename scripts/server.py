@@ -360,7 +360,7 @@ def handle_client(conn, addr):
 
 
                                         data = {
-                                                "timestamp": now.isoformat(),
+                                                "timestamp": current_iso8601,
                                                 "commonName":  Com_Name,
                                                 "scientificName":  Sci_Name,
                                                 "lat": str(args.lat),
