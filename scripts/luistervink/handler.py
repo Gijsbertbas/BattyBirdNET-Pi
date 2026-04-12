@@ -65,7 +65,7 @@ class DetectionSoundHandler(BaseHandler):
             WHERE Date = DATE('{date}')
             AND Time = TIME('{time}')
             AND Sci_Name = '{scientific_name}'
-            AND Confidence >= {confidence}"""
+            AND Confidence = {confidence}"""
         cur.execute(sql)
         detections = cur.fetchall()
 
@@ -157,8 +157,9 @@ class ReloadDetectionsHandler(BaseHandler):
 
     def _collect_detections(self, date: str) -> list[Detection]:
         # Order of fields needs to correspond with the Detection model
-        sql = f"""SELECT date, time, begin_time, end_time, scientific_name, common_name, confidence, latitude, longitude 
-        FROM notes WHERE date = '{date}' AND confidence >= threshold ORDER BY time ASC"""
+        sql = f"""SELECT Date as date, Time as time, Sci_Name as scientific_name,
+        Com_Name as common_name, Confidence as confidence, Lat as latitude, Lon as longitude
+        FROM detections WHERE Date = '{date}' AND Confidence >= Cutoff ORDER BY Time ASC"""
 
         with sqlite3.connect(DB_PATH) as con:
             cur = con.cursor()

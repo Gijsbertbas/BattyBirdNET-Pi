@@ -1,8 +1,8 @@
 import logging
 from client import LuistervinkClient
-from .dto import Task
-from .handler import DetectionSoundHandler, ReloadDetectionsHandler
-from .settings import get_settings, MAX_TASKS
+from dto import Task
+from handler import DetectionSoundHandler, ReloadDetectionsHandler
+from settings import get_settings, MAX_TASKS
 import sys
 
 log = logging.getLogger("task_processor")
