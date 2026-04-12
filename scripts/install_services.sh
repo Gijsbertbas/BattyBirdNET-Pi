@@ -455,6 +455,10 @@ install_weekly_cron() {
   sed "s/\$USER/$USER/g" $my_dir/templates/weekly_report.cron >> /etc/crontab
 }
 
+install_luistervink_cron() {
+  sed "s/\$USER/$USER/g" $my_dir/templates/luistervink.cron >> /etc/crontab
+}
+
 chown_things() {
   chown -R $USER:$USER $HOME/Bird*
   chown -R $USER:$USER $HOME/Bat*
@@ -492,6 +496,7 @@ install_services() {
   install_livestream_service
   install_cleanup_cron
   install_weekly_cron
+  install_luistervink_cron
   increase_caddy_timeout
   install_batnet_timer_server
 

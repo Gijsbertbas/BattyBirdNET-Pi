@@ -1,0 +1,30 @@
+import requests
+import logging
+
+from .dto import LuistervinkSettings
+
+log = logging.getLogger(__name__)
+
+
+class LuistervinkClient:
+    def __init__(self, conf: LuistervinkSettings):
+        self.conf = conf
+        self.base_url = conf.server_address
+        self.params = {"token": conf.device_token}
+        self.session = requests.Session()
+
+    def get(self, endpoint: str) -> requests.Response:
+        url = f"{self.base_url}/api/{endpoint}"
+        return requests.get(url, params=self.params)
+
+    def post(
+        self, endpoint: str, data: dict | None = None, files: dict | None = None
+    ) -> requests.Response:
+        url = f"{self.base_url}/{endpoint}"
+        return requests.post(
+            url, json=data, params=self.params, files=files, timeout=30
+        )
+
+    def put(self, endpoint: str, data: dict | None = None) -> requests.Response:
+        url = f"{self.base_url}/{endpoint}"
+        return requests.put(url, json=data, params=self.params, timeout=30)

@@ -58,6 +58,7 @@ BIRDWEATHER_ID=
 
 LUISTERVINK_SERVER_ADDRESS=https://api.luistervink.nl
 LUISTERVINK_DEVICE_TOKEN=
+LUISTERVINK_ENABLE_TASK_PROCESSOR=true
 
 #-----------------------  Web Interface User Password  ------------------------#
 #____________________The variable below sets the 'birdnet'_____________________#

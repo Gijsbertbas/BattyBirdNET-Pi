@@ -87,6 +87,15 @@ if ! grep SITE_NAME /etc/birdnet/birdnet.conf &>/dev/null;then
   sudo -u $USER echo "SITE_NAME=\"\"" >> /etc/birdnet/birdnet.conf
 fi
 
+if ! grep LUISTERVINK_SERVER_ADDRESS /etc/birdnet/birdnet.conf &>/dev/null;then
+  sudo -u $USER echo "LUISTERVINK_SERVER_ADDRESS=https://api.luistervink.nl" >> /etc/birdnet/birdnet.conf
+  sudo -u $USER echo "LUISTERVINK_DEVICE_TOKEN=" >> /etc/birdnet/birdnet.conf
+fi
+
+if ! grep LUISTERVINK_ENABLE_TASK_PROCESSOR /etc/birdnet/birdnet.conf &>/dev/null;then
+  sudo -u $USER echo "LUISTERVINK_ENABLE_TASK_PROCESSOR=true" >> /etc/birdnet/birdnet.conf
+fi
+
 if ! grep PRIVACY_THRESHOLD /etc/birdnet/birdnet.conf &>/dev/null;then
   sudo -u $USER echo "PRIVACY_THRESHOLD=0" >> /etc/birdnet/birdnet.conf
   git -C $HOME/BirdNET-Pi rm $my_dir/privacy_server.py
@@ -182,6 +191,9 @@ fi
 
 if ! grep weekly_report /etc/crontab &>/dev/null;then
   sed "s/\$USER/$USER/g" $HOME/BirdNET-Pi/templates/weekly_report.cron | sudo tee -a /etc/crontab
+fi
+if ! grep luistervink /etc/crontab &>/dev/null;then
+  sed "s/\$USER/$USER/g" $HOME/BirdNET-Pi/templates/luistervink.cron | sudo tee -a /etc/crontab
 fi
 if ! grep APPRISE_WEEKLY_REPORT /etc/birdnet/birdnet.conf &>/dev/null;then
   sudo -u $USER echo "APPRISE_WEEKLY_REPORT=1" >> /etc/birdnet/birdnet.conf

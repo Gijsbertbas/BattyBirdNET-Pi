@@ -171,6 +171,7 @@ if(isset($_GET["latitude"])){
   $contents = preg_replace("/BIRDWEATHER_ID=.*/", "BIRDWEATHER_ID=$birdweather_id", $contents);
   $contents = preg_replace("/LUISTERVINK_SERVER_ADDRESS=.*/", "LUISTERVINK_SERVER_ADDRESS=$luistervink_server_address", $contents);
   $contents = preg_replace("/LUISTERVINK_DEVICE_TOKEN=.*/", "LUISTERVINK_DEVICE_TOKEN=$luistervink_device_token", $contents);
+  $contents = preg_replace("/LUISTERVINK_ENABLE_TASK_PROCESSOR=.*/", "LUISTERVINK_ENABLE_TASK_PROCESSOR=$luistervink_enable_task_processor", $contents);
   $contents = preg_replace("/APPRISE_NOTIFICATION_TITLE=.*/", "APPRISE_NOTIFICATION_TITLE=\"$apprise_notification_title\"", $contents);
   $contents = preg_replace("/APPRISE_NOTIFICATION_BODY=.*/", "APPRISE_NOTIFICATION_BODY='$apprise_notification_body'", $contents);
   $contents = preg_replace("/APPRISE_NOTIFY_EACH_DETECTION=.*/", "APPRISE_NOTIFY_EACH_DETECTION=$apprise_notify_each_detection", $contents);
@@ -193,6 +194,7 @@ if(isset($_GET["latitude"])){
   $contents2 = preg_replace("/BIRDWEATHER_ID=.*/", "BIRDWEATHER_ID=$birdweather_id", $contents2);
   $contents2 = preg_replace("/LUISTERVINK_SERVER_ADDRESS=.*/", "LUISTERVINK_SERVER_ADDRESS=$luistervink_server_address", $contents2);
   $contents2 = preg_replace("/LUISTERVINK_DEVICE_TOKEN=.*/", "LUISTERVINK_DEVICE_TOKEN=$luistervink_device_token", $contents2);
+  $contents2 = preg_replace("/LUISTERVINK_ENABLE_TASK_PROCESSOR=.*/", "LUISTERVINK_ENABLE_TASK_PROCESSOR=$luistervink_enable_task_processor", $contents2);
 
   $contents2 = preg_replace("/APPRISE_NOTIFICATION_TITLE=.*/", "APPRISE_NOTIFICATION_TITLE=\"$apprise_notification_title\"", $contents2);
   $contents2 = preg_replace("/APPRISE_NOTIFICATION_BODY=.*/", "APPRISE_NOTIFICATION_BODY='$apprise_notification_body'", $contents2);
@@ -518,10 +520,15 @@ function runProcess() {
       </table><br>
         <table class="settingstable"><tr><td>
 	       <h2>Luistervink</h2>
-        <label for="luistervink_server_address">Luistervink Address: </label>
-        <input name="luistervink_server_address" type="text" value="<?php echo htmlspecialchars($config['LUISTERVINK_SERVER_ADDRESS'] ?? ''); ?>" /><br>
-        <label for="luistervink_device_token">Device Token: </label>
-        <input name="luistervink_device_token" type="text" value="<?php print($config['LUISTERVINK_DEVICE_TOKEN']);?>" /><br>
+          <label for="luistervink_server_address">Luistervink Address: </label>
+          <input name="luistervink_server_address" type="text" value="<?php echo htmlspecialchars($config['LUISTERVINK_SERVER_ADDRESS'] ?? ''); ?>" /><br>
+          <label for="luistervink_device_token">Device Token: </label>
+          <input name="luistervink_device_token" type="text" value="<?php print($config['LUISTERVINK_DEVICE_TOKEN']);?>" /><br>
+          <label for="luistervink_task_processor">Enable task processor: </label>
+          <select name="luistervink_task_processor" class="testbtn">
+            <option value="true" <?php if (!empty($config['LUISTERVINK_ENABLE_TASK_PROCESSOR'])) echo 'selected="selected"'; ?>>Enabled</option>
+            <option value="false" <?php if (empty($config['LUISTERVINK_ENABLE_TASK_PROCESSOR'])) echo 'selected="selected"'; ?>>Disabled</option>
+          </select>
           <p>Enter the Luistervink address and device token for integration with the system.</p>
         </td></tr>
       </table><br>
