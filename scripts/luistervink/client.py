@@ -1,7 +1,7 @@
 import requests
 import logging
 
-from .dto import LuistervinkSettings
+from dto import LuistervinkSettings
 
 log = logging.getLogger(__name__)
 
