@@ -75,6 +75,7 @@ if(isset($_GET["latitude"])){
   $birdweather_id = $_GET["birdweather_id"];
   $luistervink_device_token = $_GET["luistervink_device_token"]; // New Luistervink ID
   $luistervink_server_address = $_GET["luistervink_server_address"]; // New LUISTERVINK_SERVER_ADDRESS
+  $luistervink_enable_task_processor = $_GET["luistervink_task_processor"]; // Enable task processor (true/false)
   $apprise_input = $_GET['apprise_input'];
   $apprise_notification_title = $_GET['apprise_notification_title'];
   $apprise_notification_body = $_GET['apprise_notification_body'];
